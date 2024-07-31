@@ -6,6 +6,7 @@ import Product from "./pages/Product";
 import Favorites from "./pages/Favorites";
 import Contact from "./pages/Contact/index.tsx";
 import ProductDetail from './pages/Product/ProductDetail.tsx'
+import Error from "./pages/404/index.tsx";
 import { FavoritesProvider } from "./context/FavoritesContext.tsx";
 
 const router = createBrowserRouter([
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
         <Outlet />
       </>
     ),
+    errorElement: <Error />,
     children: [
       {
         path: "/",

@@ -12,7 +12,6 @@ const ProductDetail = () => {
       .get(`https://fakestoreapi.com/products/${id}`)
       .then((response) => setProduct(response.data))
       .catch((error) => console.error(error));
-     
   }, [id]);
 
   return (
@@ -20,7 +19,17 @@ const ProductDetail = () => {
       {product && (
         <Card
           title={product.title}
-          cover={<img alt={product.title} src={product.image} />}
+          cover={
+            <img
+              alt={product.title}
+              src={product.image}
+              style={{
+                maxWidth: "300px",
+                maxHeight: "300px",
+                objectFit: "contain",
+              }}
+            />
+          }
         >
           <p>{product.description}</p>
           <p>Price: ${product.price}</p>
