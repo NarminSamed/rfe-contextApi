@@ -8,11 +8,11 @@ const Favorites = () => {
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
       {favorites.map((product) => (
         <Card
-          key={product.id}
-          title={product.name}
+          key={product?.id}
+          title={product?.name}
           style={{ width: 300 }}
         >
-          <p>Price: {product.price}</p>
+          <p>Price: {product?.price}</p>
         </Card>
       ))}
     </div>
