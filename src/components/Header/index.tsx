@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Menu, Badge } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFavorites } from '../../context/FavoritesContext';
+import { AuthContext } from '../../context/AuthContext';
 
 const AppHeader: React.FC = () => {
-
   const { toggleCount } = useFavorites();
+  const authContext = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  if (!authContext) {
+    return null;
+  }
+
+  const { user, logout } = authContext;
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   return (
     <Menu theme="light" mode="horizontal" defaultSelectedKeys={["1"]}>
@@ -23,6 +36,11 @@ const AppHeader: React.FC = () => {
           Favorites <Badge count={toggleCount} />
         </Link>
       </Menu.Item>
+      {user && (
+        <Menu.Item key="5" onClick={handleLogout}>
+          Logout
+        </Menu.Item>
+      )}
     </Menu>
   );
 };

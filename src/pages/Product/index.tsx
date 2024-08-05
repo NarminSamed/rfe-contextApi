@@ -30,17 +30,35 @@ const Product: React.FC = () => {
   };
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "30px", justifyContent: "center" }}>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "30px",
+        justifyContent: "center",
+      }}
+    >
       {products.map((product) => (
         <Card
           hoverable
           key={product?.id}
           cover={
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "200px" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "200px",
+              }}
+            >
               <img
                 alt={product.title}
                 src={product.image}
-                style={{ maxWidth: "100px", maxHeight: "100%", objectFit: "contain" }}
+                style={{
+                  maxWidth: "100px",
+                  maxHeight: "100%",
+                  objectFit: "contain",
+                }}
               />
             </div>
           }
@@ -59,7 +77,7 @@ const Product: React.FC = () => {
           }
           style={{ width: 300 }}
         >
-           <Link to={`/product/${product.id}`}>
+          <Link to={`/product/${product.id}`}>
             <Card.Meta title={product.title} />
           </Link>
           <p>Price: ${product?.price}</p>
